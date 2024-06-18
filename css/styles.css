@@ -1,0 +1,282 @@
+/* The switch - the box around the slider */
+.switch {
+  display: block;
+  --width-of-switch: 3.5em;
+  --height-of-switch: 2em;
+  --size-of-icon: 1.4em;
+  --slider-offset: 0.3em;
+  position: relative;
+  width: var(--width-of-switch);
+  height: var(--height-of-switch);
+  margin: 20px auto;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f4f4f5;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-of-icon,1.4em);
+  width: var(--size-of-icon,1.4em);
+  border-radius: 20px;
+  left: var(--slider-offset,0.3em);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #303136;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+  background: #303136;
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+/* General Styles */
+body {
+  font-family: 'Lexend', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  font-size: 0.8rem; /* Reduce font size to 80% */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--primary);
+  color: var(--text);
+}
+
+.burger {
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: var(--primary);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 20px 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent);
+}
+
+nav.show {
+  left: 0;
+}
+
+main {
+  padding: 2rem;
+  background: var(--background);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Reduced number of projects per row */
+  gap: 3rem; /* Increased gap to accommodate larger project tiles */
+}
+
+.project {
+  background: var(--secondary);
+  padding: 3.6rem; /* Increased padding */
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  background: var(--secondary-hover); /* Subtle color change */
+}
+
+.project a {
+  display: block;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 400px; /* Ensure the images fit well within the box */
+  object-fit: cover; /* Ensure the images fit well within the box */
+}
+
+.project p {
+  margin-top: 2.7rem; /* Increased margin to match larger box */
+  color: var(--text);
+  font-size: 1.2rem; /* Adjust font size */
+}
+
+.squircle {
+  background: var(--secondary);
+  padding: 2.5rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  transition: background 0.3s ease;
+}
+
+.squircle:hover {
+  background: var(--secondary-hover); /* Subtle color change */
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  color: var(--text);
+  font-size: 2rem; /* Adjust font size */
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-size: 1.2rem; /* Adjust font size */
+}
+
+ul {
+  color: var(--text);
+  font-size: 1.2rem; /* Adjust font size */
+}
+
+/* Light Theme Variables */
+body.light-theme {
+  --text: #a595cb;
+  --background: #ddd0e7;
+  --primary: #cdb4e9;
+  --secondary: #6e4b95;
+  --secondary-hover: #7b5f97; /* Subtle hover color */
+  --accent: #8d56cd;
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+  --text: #44346a;
+  --background: #25182f;
+  --primary: #2f164b;
+  --secondary: #8c6ab4;
+  --secondary-hover: #9b7bb4; /* Subtle hover color */
+  --accent: #6a32a9;
+}
+
+.squircle-title { 
+  font-weight: 600; 
+}
+
+.homepage-top {
+  display: flex;
+  flex-direction: row;
+  height: 750px;
+  justify-content: space-between
+}
+.homepage-project, .homepage-updates, .homepage-contact {
+  margin-top: 35px;
+  padding: 20;
+  border-radius: 20px;
+  transition: background 0.3s ease; 
+  background: var(--secondary);
+}
+
+.homepage-project {
+  width: 65%;
+  height: 102%;
+}
+.homepage-updates {
+  width: 33%;
+  height: 102%;
+}
+
+.homepage-updates:hover, .homepage-project:hover, .homepage-contact:hover{
+  background: var(--secondary-hover);
+}
+
+
+.homepage-project img {
+  width: 96%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 600px;
+  object-fit: cover;
+  margin: 2%;
+}
+.homepage-project p {
+  margin-left: 40px;
+  font-size: large;
+  font-weight: 500;
+}
+.homepage-title { 
+  font-weight: 600;
+  font-size: x-large;
+}
+.homepage-updates p {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.homepage-contact p {
+  margin-top: 4.1%;
+  padding: 25px;
+}
