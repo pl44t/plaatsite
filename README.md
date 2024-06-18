@@ -1,2 +1,2 @@
 A site to view my projects, what im doing and contact me.
-this took ages to create.
+this took a while to make.
